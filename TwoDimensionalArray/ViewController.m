@@ -20,13 +20,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    self.TwoDArray = @[@[@"0", @"1", @"2", @"3"],
-                       @[@"4", @"5", @"6", @"7"],
-                       @[@"8", @"9", @"a", @"b"],
-                       @[@"c", @"d", @"e", @"f"]];
+    self.TwoDArray = @[@[@"💡", @"🌜", @"👬", @"🌃"],
+                       @[@"💬", @"💳", @"🎫", @"📅"],
+                       @[@"🚊", @"🍕", @"🎾", @"🚶"],
+                       @[@"🌈", @"🍦", @"🚌", @"🎭"]];
     
-    NSString *object1 = @"9";
-    NSString *object2 = @"a";
+    NSString *object1 = @"🎾";
+    NSString *object2 = @"🎭";
     
     [self searchUsingTwoLoopsWithObject:object1];
     [self searchUsingOneLoopWithObject:object2];
@@ -38,8 +38,10 @@
         NSArray *rowArray = self.TwoDArray[i];
         for (NSUInteger j = 0; j < rowArray.count; j++) {
             if ([self.TwoDArray[i][j] isEqualToString:searchObj]) {
-                NSLog(@"Using two loops, '%@' found at row: %lu, column: %lu", searchObj, i + 1, j + 1);
+                NSLog(@"With two loops, %@ is at row: %lu col: %lu",
+                      searchObj, i + 1, j + 1);
                 return;
+                // With two loops, 🎾 is at row: 3 col: 3
             }
         }
     }
@@ -51,8 +53,10 @@
     for (NSUInteger i = 0; i < self.TwoDArray.count; i++) {
         NSArray *rowArray = self.TwoDArray[i];
         if ([rowArray containsObject:searchObj]) {
-            NSLog(@"Using one loop, '%@' found at row: %lu, column: %lu", searchObj, i + 1, [rowArray indexOfObjectIdenticalTo:searchObj] + 1);
+            NSLog(@"With one loop, %@ is at row: %lu, col: %lu", searchObj,
+                  i + 1, [rowArray indexOfObjectIdenticalTo:searchObj] + 1);
             return;
+            // With one loop, 🎭 is at row: 4, col: 4
         }
     }
     NSLog(@"WTF?!?");
